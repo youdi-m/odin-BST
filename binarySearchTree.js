@@ -4,31 +4,51 @@ class Node {
 		this.value = value;
 		this.left = null;
 		this.right = null;
-		
+
 	}
 }
 
-class Tree { 
+export class Tree { 
 
 	constructor(arr) {
-		this.root = null;
-
+		this.arr = arr;
+		this.sortArray();
+		this.removeDuplicates();
+		this.root = this.buildTree(this.arr);
 	}
 
 	// sorts the given array
-	sort(arr) {
-
+	sortArray() {
+		return this.arr.sort((a,b) => a-b);
 	}
 
 	// removes duplicates from the given array
-	removeDuplicates(arr) {
+	removeDuplicates() {
 
+		for(let i = 1; i < this.arr.length; i++) {
+			if(this.arr[i] == this.arr[i-1]) {
+				this.arr.splice(i,1);
+				i--;
+			}
+		}
+
+		return this.arr;
 	}
 
 	// turns the array into a balanced tree with node objects
 	buildTree(arr) {
+		if(arr.length === 0) return null;
 
+		let mid = Math.floor(arr.length/2);
+		let root= arr[mid];
+		let newNode = new Node(root);
+
+		newNode.left = this.buildTree(arr.slice(0, mid));
+		newNode.right = this.buildTree(arr.slice(mid + 1));
+
+		return newNode;
 	}
+	
 
 	// return true\false if value is\is not in the tree
 	includes(value) {
