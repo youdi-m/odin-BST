@@ -4,7 +4,6 @@ class Node {
 		this.value = value;
 		this.left = null;
 		this.right = null;
-
 	}
 }
 
@@ -25,6 +24,8 @@ export class Tree {
 	// removes duplicates from the given array
 	removeDuplicates() {
 
+		// splice array ar the duplicate value
+		// decrement i in case theres 3 or more in a row
 		for(let i = 1; i < this.arr.length; i++) {
 			if(this.arr[i] == this.arr[i-1]) {
 				this.arr.splice(i,1);
@@ -36,16 +37,22 @@ export class Tree {
 	}
 
 	// turns the array into a balanced tree with node objects
+	// returns tree root
 	buildTree(arr) {
 		if(arr.length === 0) return null;
 
+		// get mid point of the array
 		let mid = Math.floor(arr.length/2);
+		
+		// define root as value at the mid point
 		let root= arr[mid];
 		let newNode = new Node(root);
 
+		// recursively split the array until theres nothing
 		newNode.left = this.buildTree(arr.slice(0, mid));
 		newNode.right = this.buildTree(arr.slice(mid + 1));
 
+		// return root of our tree
 		return newNode;
 	}
 	
