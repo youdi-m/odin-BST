@@ -45,7 +45,7 @@ export class Tree {
 		let mid = Math.floor(arr.length/2);
 		
 		// define root as value at the mid point
-		let root= arr[mid];
+		let root = arr[mid];
 		let newNode = new Node(root);
 
 		// recursively split the array until theres nothing
@@ -84,7 +84,8 @@ export class Tree {
 	}
 
 	// accepts callback function
-	// traverses tree in BFS, passes the VALUE of the nodes as arguments
+	// traverses tree in BFS, top to bottom, left to right
+	// passes the VALUE of the nodes as arguments
 	levelOrderForEach(callback) {
 
 	}
@@ -109,6 +110,7 @@ export class Tree {
 
 	// return the height of the node containing the given value
 	height(value) {
+
 
 	}
 
