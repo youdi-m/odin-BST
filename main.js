@@ -8,3 +8,9 @@ let tree = new Tree(treeArr);
 
 //print the tree
 prettyPrint(tree.root);
+
+tree.insert(13);
+prettyPrint(tree.root);
+
+tree.deleteItem(13);
+prettyPrint(tree.root);

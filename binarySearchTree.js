@@ -59,18 +59,28 @@ export class Tree {
 
 	// return true\false if value is\is not in the tree
 	includes(value) {
-
+		
+		for(let i = 0; i < this.arr.length; i++) {
+			if(this.arr[i] == value) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	// insert a node with that value into the tree
 	// if the value exists do nothing
 	insert(value) {
+		if(this.includes(value)) return 0;
 
+		this.arr.push(value);
+		this.sortArray();
+		
 	}
 
 	// removes value from the tree
 	deleteItem(value) {
-
+		this.arr.slice(value, 1);
 	}
 
 	// accepts callback function
