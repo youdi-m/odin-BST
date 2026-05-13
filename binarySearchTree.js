@@ -116,13 +116,14 @@ export class Tree {
 	}
 
 	// accepts callback function
-	// traverses the tree from root - left - right
+	// traverses the tree from left - root - right
 	inOrderForEach(callback) {
 
+		
 	}
 
 	// accepts callback function
-	// traverses the tree from left - root - right
+	// traverses the tree from root - left - right
 	preOrderForEach(callback) {
 
 	}
