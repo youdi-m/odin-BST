@@ -75,12 +75,22 @@ export class Tree {
 
 		this.arr.push(value);
 		this.sortArray();
-		
+		this.buildTree(this.arr);
+		this.root = this.buildTree(this.arr);
 	}
 
 	// removes value from the tree
 	deleteItem(value) {
-		this.arr.slice(value, 1);
+		if(!this.includes(value)) return 0;
+		
+		this.arr.splice(this.arr.indexOf(value), 1);
+		this.buildTree(this.arr);
+		this.root = this.buildTree(this.arr);
+	}
+
+	// returns the value at a node
+	valueAt(node) {
+		return node.value;
 	}
 
 	// accepts callback function
@@ -88,6 +98,21 @@ export class Tree {
 	// passes the VALUE of the nodes as arguments
 	levelOrderForEach(callback) {
 
+		let queue = [];
+		queue.push(this.root);
+
+		while(queue.length !== 0) {
+			let currentNode = queue.shift()
+			callback(currentNode)
+
+			if(currentNode.left !== null) {
+				queue.push(currentNode.left);
+			}
+
+			if(currentNode.right !== null) {
+				queue.push(currentNode.right);
+			}
+		}
 	}
 
 	// accepts callback function

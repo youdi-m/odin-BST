@@ -8,9 +8,14 @@ let tree = new Tree(treeArr);
 
 //print the tree
 prettyPrint(tree.root);
+console.log('-------------------');
 
 tree.insert(13);
 prettyPrint(tree.root);
+console.log('-------------------');
 
 tree.deleteItem(13);
 prettyPrint(tree.root);
+console.log('-------------------');
+
+tree.levelOrderForEach(tree.valueAt);
